@@ -12,7 +12,7 @@ terraform {
 }
 
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "terraformstatefile123456890"
+  bucket = "terraformstatefileagyago123"
   lifecycle {
     prevent_destroy = true
   }
@@ -27,7 +27,7 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "main" {
-  name = "terraformstatefile"
+  name = "terraformstatefileagyago123"
   hash_key = "LockID"
   write_capacity = 1
   read_capacity = 1
