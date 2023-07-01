@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 terraform {
   required_version = ">= 0.12"
   required_providers {
@@ -7,22 +11,23 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_s3_bucket" "tf_state" {
-  bucket = terraformstatefile
-  versioning {
-    enabled = true
-  }
+  bucket = "terraformstatefile123456890"
   lifecycle {
     prevent_destroy = true
   }
 }
 
+resource "aws_s3_bucket_versioning" "terraform_state" {
+    bucket = aws_s3_bucket.tf_state.id
+
+    versioning_configuration {
+      status = "Enabled"
+    }
+}
+
 resource "aws_dynamodb_table" "main" {
-  name = terraformstatefile
+  name = "terraformstatefile"
   hash_key = "LockID"
   write_capacity = 1
   read_capacity = 1
