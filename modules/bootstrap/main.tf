@@ -1,18 +1,5 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_version = ">= 0.12"
-  required_providers {
-    aws = {
-        source = "hashicorp/aws"
-    }
-  }
-}
-
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "terraformstatefileagyago123"
+  bucket = var.backend_bucket
   lifecycle {
     prevent_destroy = true
   }
@@ -27,7 +14,7 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "main" {
-  name = "terraformstatefileagyago123"
+  name = var.dynamic_table
   hash_key = "LockID"
   write_capacity = 1
   read_capacity = 1
