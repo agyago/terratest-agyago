@@ -3,3 +3,8 @@ module "s3_bucketlist" {
     backend_bucket = "bucketybuckbuckagyago1234567890"
     dynamic_table = "tableybuckbuckagyago1234567890"
 }
+
+terraform {
+  backend "s3" {
+  }
+}
