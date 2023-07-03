@@ -7,5 +7,5 @@ variable "buckety" {
 }
 
 variable "dyna_table" {
-    default = "tableybuckbuckagyago1234567890" 
+    default ="tableybuckbuckagyago1234567890"
 }
