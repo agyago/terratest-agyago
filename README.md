@@ -6,8 +6,6 @@ Module:
   1. terraform init -backend=false
   2. terraform plan -out=tfplan -target=module.s3_bucketlist
   3. terraform apply tfplan
-  4. terraform init -reconfigure \
-     -backend-config="bucket=bucketybuckbuckagyago1234567890" \
-     -backend-config="key=initialkey.tfstate" \
-     -backend-config="dynamodb_table=tableybuckbuckagyago1234567890" \
-     -backend-config=region="us-east-1"
+  4. change versions.tf.disable to versions.tf
+  5. terraform init -backend-config=../backends3.env -force-copy
+    initially you need to input 'initialkey.tfstate'
