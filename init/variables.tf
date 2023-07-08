@@ -9,3 +9,13 @@ variable "buckety" {
 variable "dyna_table" {
     default ="tableybuckbuckagyago1234567890"
 }
+
+variable "admin_names" {
+    type = list(string)
+    default = ["cheezychinito"]
+}
+
+variable "read_names" {
+    type = list(string)
+    default = ["blusteruth"]
+}
