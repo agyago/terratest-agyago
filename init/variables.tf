@@ -12,10 +12,10 @@ variable "dyna_table" {
 
 variable "admin_names" {
     type = list(string)
-    default = ["cheezychinito"]
+    default = ["cheezychinito","agyago"]
 }
 
 variable "read_names" {
     type = list(string)
-    default = ["blusteruth"]
+    default = ["blusteruth","kabuto"]
 }
