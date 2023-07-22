@@ -13,3 +13,8 @@ Module:
   ```
   1. adding additional users is easy
   2. removing user in any group, remove every user in the group. it needs terraform plan/apply again to refresh/readd users in the group ```
+
+- VPC = Creating network
+   * a VPC
+   * public subnet - [internet gateway] - has access and is accessible from the internet
+   * private subnet - [nat gw ] - can use internet access but not accessible from outside(internet)
