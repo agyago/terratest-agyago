@@ -67,16 +67,16 @@ resource "aws_route_table_association" "private" {
 
 # Create an Elastic IP for the NAT Gateway
 resource "aws_eip" "nat" {
+  
   vpc = true
 }
 
 # Create a NAT Gateway in the public subnet
 resource "aws_nat_gateway" "main" {
   count             = var.count_number
-  allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.public[count.index].id
+  allocation_id = element(aws_eip.nat.*.id, count.index)
+  subnet_id     = element(aws_subnet.public.*.id, count.index)
 }
-
 
 #resource "aws_vpc_dhcp_options" "dhcp" {
 #  domain_name = "var.domain_name"
