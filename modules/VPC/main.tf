@@ -68,7 +68,7 @@ resource "aws_route_table_association" "private" {
 # Create an Elastic IP for the NAT Gateway
 resource "aws_eip" "nat" {
   count = var.count_number
-  vpc = true
+  domain = "vpc"
 }
 
 # Create a NAT Gateway in the public subnet
