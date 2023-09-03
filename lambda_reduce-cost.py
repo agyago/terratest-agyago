@@ -7,8 +7,10 @@ def process_message(message):
    if not alarm_name:
       print("ignoring..")
       return
-   if 'sleepy' in alarm_name:  # Fixed variable name
-      print('host will shutdown')
+   if 'sleepy' in alarm_name:
+      print('ASG will terminate instances')
+   elif 'wake-up' in alarm_name:
+      print('ASG will add instance')
    else:
       print('unknown alarm')
    return
