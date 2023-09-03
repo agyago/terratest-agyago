@@ -24,8 +24,11 @@ Module:
 Lambda Function:
 simple python script using SNS as a trigger.
 ```
-1. Trigger will start from ASG Dynamic Policy either (scaling down : 'sleepy' || scaling up: 'wake-up')
-2. It will alert SNS
+1. Trigger will start from ASG Dynamic Policy either:
+   (scaling down : 'sleepy' , ASG will scale down
+    scaling up   : 'wake-up', ASG will scale up )
+2. It will then alert SNS
 3. SNS will publish message
 4. Lambda script will be triggered
+5. RDS will stop if scaling down or RDS will start if scaling up
 ```
