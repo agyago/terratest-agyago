@@ -1,4 +1,20 @@
 import json
+import boto3
+
+rds_cluster = os.environ['RDS_CLUSTER']
+rds_params = { 'DBClusterIdentifier': rds_cluster }
+
+def process_rds(message):
+   try:
+      rds = boto3.client('rds')
+      if message == 'wake-up':
+         print(f'{rds_cluster} starting...')
+         return rds.start_db_cluster(**rds_param)
+      elif message == 'stop':
+         print(f'{rds_cluster} stopping...')
+         return rds.stop_db_cluster(**rds_param)
+   except:
+      print('Error RDS not responding')
 
 def process_message(message):
    print("SNS message: " + message)
