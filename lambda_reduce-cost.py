@@ -3,7 +3,7 @@ import boto3
 import os
 
 rds_cluster = os.environ['RDS_CLUSTER']
-rds_params = { 'DBClusterIdentifier': rds_cluster }
+rds_param = { 'DBClusterIdentifier': rds_cluster }
 
 def process_rds(message):
    try:
@@ -26,8 +26,10 @@ def process_message(message):
       return
    if 'sleepy' in alarm_name:
       print('ASG will terminate instances')
+      process_rds('stop')
    elif 'wake-up' in alarm_name:
       print('ASG will add instance')
+      process_rds('wake-up')
    else:
       print('unknown alarm')
    return
