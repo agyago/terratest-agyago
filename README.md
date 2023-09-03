@@ -19,3 +19,13 @@ Module:
    * a VPC
    * public subnet - [internet gateway] - has access and is accessible from the internet
    * private subnet - [nat gw ] - can use internet access but not accessible from outside(internet)
+```
+
+Lambda Function:
+simple python script using SNS as a trigger.
+```
+1. Trigger will start from ASG Dynamic Policy either (scaling down : 'sleepy' || scaling up: 'wake-up')
+2. It will alert SNS
+3. SNS will publish message
+4. Lambda script will be triggered
+```
