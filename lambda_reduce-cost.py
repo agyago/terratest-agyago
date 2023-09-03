@@ -1,5 +1,6 @@
 import json
 import boto3
+import os
 
 rds_cluster = os.environ['RDS_CLUSTER']
 rds_params = { 'DBClusterIdentifier': rds_cluster }
