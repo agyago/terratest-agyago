@@ -1,5 +1,6 @@
 import json
 import boto3
+import botocore.exceptions
 import os
 
 rds_cluster = os.environ['RDS_CLUSTER']
@@ -14,11 +15,11 @@ def process_rds(message):
       elif message == 'stop':
          print(f'{rds_cluster} stopping...')
          return rds.stop_db_cluster(**rds_param)
-   except:
-      print('Error RDS not responding')
+   except(botocore.exceptions.ClientError) as error:
+        print (f"RDS exception: {error}")
 
 def process_message(message):
-   print("SNS message: " + message)
+   print(f"SNS message: {message}")
    msg = json.loads(message)
    alarm_name = msg.get("AlarmName")
    if not alarm_name:
